@@ -515,36 +515,75 @@ body {
     height: 80vh;
     object-fit: cover;
 }
+/* /////////////////////////////// */
+.book-item {
+    position: relative;
+    width: fit-content;
+    background: linear-gradient(0deg, #000, #272727);
+}
+
+/* استجابة لتصغير حجم الشاشة */
+@media (max-width: 768px) {
+    .book {
+        padding: 20px;
+        flex-direction: column;
+        /* ترتيب العناصر عموديًا */
+    }
+
+    .book {
+        width: 100%;
+        /* تقليل العرض ليكون مناسبًا للشاشات الصغيرة */
+        height: 200px;
+        /* تقليل الارتفاع */
+    }
+}
+
+@media (max-width: 480px) {
+    .book {
+        width: 100%;
+        /* استخدام العرض الكامل للشاشة */
+        height: 150px;
+        /* تقليل الارتفاع أكثر */
+    }
+
+    .book-item:before,
+    .book-item:after {
+        width: calc(100% + 2px);
+        /* تعديل العرض */
+        height: calc(100% + 2px);
+        /* تعديل الارتفاع */
+    }
+}
+
+/* Steam Effect */
+.steam-effect {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,
+        #0000ff, #00ff00, #ffff00, #ff0000);
+    background-size: 400%;
+    filter: blur(50px);
+    pointer-events: none;
+}
+
+/* //////////////////////////////// */
 
 .book .book-item{
-    filter: brightness(0.4);
+    filter: brightness(0);
     animation-duration: 10s;
     transition:  0.5s ease;
 }
 
 .book .book-item:hover {
     filter: brightness(1);
-    transform: translateZ(200px);
+    transform: translateZ(100px);
 }
 
-.book .book-item:hover+* {
-    filter: brightness(1);
-    transform: translateZ(200px) rotateY(40deg);
-}
 
-.book .book-item:hover+*+* {
-    filter: brightness(1);
-    transform: translateZ(200px) rotateY(-40deg);
-}
-
-.book .book-item:hover {
-    position: relative;
-}
-
-.book .book-item:hover~.book-item {
-    filter: brightness(1);
-    transform: translateZ(200px) rotateY(-40deg);
-}
 
 @media screen and (max-width:800px){
     .book{
@@ -570,4 +609,5 @@ body {
         transform: translateY(0);
     }
 }
+
 
