@@ -1,6 +1,6 @@
 const hamburgerMenu = document.querySelector('.hamburger-menu');
 const navList = document.querySelector('.nav-list');
-
+const navbar = document.querySelector('.navbar');
 // Toggle the mobile menu
 hamburgerMenu.addEventListener('click', () => {
     navList.classList.toggle('active'); // Add or remove the 'active' class
@@ -25,4 +25,23 @@ window.addEventListener('scroll', () => {
         navbar.style.pointerEvents = 'none'; // Disable interactions
     }
     lastScrollY = window.scrollY;
+});
+
+// Steam animation using JS
+document.querySelectorAll('.book-item').forEach(bookItem => {
+    // Create the steam overlay
+    const steam = document.createElement('div');
+    steam.className = 'steam-effect';
+    bookItem.appendChild(steam);
+
+    // Animate the background position
+    let pos = 0;
+    let direction = 1;
+    function animateSteam() {
+        pos += direction * 2;
+        if (pos >= 400 || pos <= 0) direction *= -1;
+        steam.style.backgroundPosition = `${pos}% 0`;
+        requestAnimationFrame(animateSteam);
+    }
+    animateSteam();
 });
